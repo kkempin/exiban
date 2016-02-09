@@ -1,4 +1,4 @@
-# Exiban
+# ExIban
 
 Library for manipulating and validating IBAN account numbers.
 
@@ -15,8 +15,16 @@ The package can be installed as:
 
   2. Run `mix deps.get` in your console to fetch from Hex
 
+
+## Usage
+    iex> ExIban.valid?("GB82 WEST 1234 5698 7654 32")
+    true
+
+    iex> ExIban.valid?("GB82 WEST 999 9999 9999")
+    false
+
 ## Documentation
-Hosted on [http://hexdocs.pm/exiban/0.0.1/ExIban.html](http://hexdocs.pm/exiban/0.0.1/ExIban.html)
+Hosted on [http://hexdocs.pm/exiban/ExIban.html](http://hexdocs.pm/exiban/ExIban.html)
 
 ## Author
 Krzysztof Kempiński
