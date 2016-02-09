@@ -31,7 +31,7 @@ defmodule ExIban.Mixfile do
 
   defp package do
     [
-      files: ["lib", "mix.exs", "README*", "readme*", "LICENSE*", "license*"],
+      files: ["lib", "mix.exs", "README*", "LICENSE*"],
       maintainers: ["Krzysztof Kempiński"],
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/kkempin/exiban"}

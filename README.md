@@ -15,6 +15,9 @@ The package can be installed as:
 
   2. Run `mix deps.get` in your console to fetch from Hex
 
+## Documentation
+Hosted on [http://hexdocs.pm/exiban/0.0.1/ExIban.html](http://hexdocs.pm/exiban/0.0.1/ExIban.html)
+
 ## Author
 Krzysztof Kempiński
 
