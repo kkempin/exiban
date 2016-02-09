@@ -1,10 +1,10 @@
 # Exiban
 
-**TODO: Add description**
+Library for manipulating and validating IBAN account numbers.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+The package can be installed as:
 
   1. Add exiban to your list of dependencies in `mix.exs`:
 
@@ -12,9 +12,10 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
           [{:exiban, "~> 0.0.1"}]
         end
 
-  2. Ensure exiban is started before your application:
 
-        def application do
-          [applications: [:exiban]]
-        end
+  2. Run `mix deps.get` in your console to fetch from Hex
 
+## Author
+Krzysztof Kempiński
+
+ExIban is released under the [MIT License](https://github.com/appcues/exsentry/blob/master/LICENSE.txt).
