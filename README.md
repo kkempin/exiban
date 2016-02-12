@@ -23,6 +23,24 @@ The package can be installed as:
     iex> ExIban.valid?("GB82 WEST 999 9999 9999")
     false
 
+### Ecto validator
+
+    defmodule User do
+      use Ecto.Schema
+      use Ecto.Model
+
+      schema "users" do
+        field :email, :string
+        field :iban, :string
+      end
+
+      def changeset(user, params \\ :empty) do
+        user
+        |> cast(params, ~w(iban email), ~w())
+        |> ExIban.EctoValidator.validate_iban(:iban)
+      end
+    end
+
 ## Documentation
 Hosted on [http://hexdocs.pm/exiban/ExIban.html](http://hexdocs.pm/exiban/ExIban.html)
 
