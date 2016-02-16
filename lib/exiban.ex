@@ -91,6 +91,22 @@ defmodule ExIban do
     |> String.strip
   end
 
+  @doc """
+  Format and IBAN to compacted version.
+
+  ## Examples
+
+      iex> ExIban.format_compact(" GB 82     WEST 1234 5698765432  ")
+      "GB82WEST12345698765432"
+  """
+
+  @spec format_compact(bitstring) :: bitstring
+  def format_compact(iban) do
+    {_, _, _, _, formatted} = parse(iban)
+    formatted
+    |> String.strip
+  end
+
   defp prepare_output({[], _}), do: :ok
   defp prepare_output({issues, _}) do
     {:error, issues}
