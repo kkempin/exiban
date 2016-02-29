@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.4">
-    <title>ExIban.EctoValidator – exiban v0.0.3</title>
+    <title>ExIban.EctoValidator – exiban v0.0.4</title>
     <link rel="stylesheet" href="dist/app-1e374caa3d.css" />
     <script src="dist/sidebar_items.js"></script>
   </head>
@@ -27,7 +27,7 @@
         exiban
       </h1>
       <h2 class="sidebar-projectVersion">
-        v0.0.3
+        v0.0.4
       </h2>
     </div>
     
@@ -59,7 +59,7 @@
 
 
       <h1>
-        <small class="visible-xs">exiban v0.0.3</small>
+        <small class="visible-xs">exiban v0.0.4</small>
         ExIban.EctoValidator
         
         
@@ -92,7 +92,7 @@
     <a href="#validate_iban/2">validate_iban(changeset, field)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Validate Ecto changeset</p>
+    <div class="summary-synopsis"><p>Validate Ecto changeset. Returns changeset or tuple in format <code class="inline">{field, error_msg}</code> which can be useful for Phoenix</p>
 </div>
   
 </div>
@@ -132,13 +132,13 @@
         
           <pre><code class="elixir">validate_iban(map, bitstring) ::
   map |
-  {:error, map}</code></pre>
+  {:error, tuple}</code></pre>
         
       </div>
     </div>
   
   <section class="docstring">
-    <p>Validate Ecto changeset</p>
+    <p>Validate Ecto changeset. Returns changeset or tuple in format <code class="inline">{field, error_msg}</code> which can be useful for Phoenix.</p>
 <h2>Examples</h2>
 <pre><code class="elixir">defmodule User do
   use Ecto.Schema
