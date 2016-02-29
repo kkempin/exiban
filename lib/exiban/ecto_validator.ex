@@ -35,6 +35,7 @@ defmodule ExIban.EctoValidator do
         new_errors = new_errors
                       |> Enum.map(&Atom.to_string/1)
                       |> Enum.map(&(String.replace(&1, "_", " ")))
+                      |> Enum.map(&({field, &1}))
         %{changeset | errors: new_errors ++ errors, valid?: false}
       :ok -> changeset
     end
