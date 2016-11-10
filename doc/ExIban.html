@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.4">
-    <title>ExIban – exiban v0.0.4</title>
+    <title>ExIban – exiban v0.0.5</title>
     <link rel="stylesheet" href="dist/app-1e374caa3d.css" />
     <script src="dist/sidebar_items.js"></script>
   </head>
@@ -27,7 +27,7 @@
         exiban
       </h1>
       <h2 class="sidebar-projectVersion">
-        v0.0.4
+        v0.0.5
       </h2>
     </div>
     
@@ -59,7 +59,7 @@
 
 
       <h1>
-        <small class="visible-xs">exiban v0.0.4</small>
+        <small class="visible-xs">exiban v0.0.5</small>
         ExIban
         
         
@@ -291,6 +291,9 @@
 true
 
 iex&gt; ExIban.valid?(&quot;GB82 WEST 999 9999 9999&quot;)
+false
+
+iex&gt; ExIban.valid?(nil)
 false</code></pre>
 
   </section>
@@ -320,7 +323,10 @@ false</code></pre>
 :ok
 
 iex&gt; ExIban.validate(&quot;GB82 WEST 999 9999 9999&quot;)
-{ :error, [:bad_length, :bad_format, :bad_check_digits] }</code></pre>
+{ :error, [:bad_length, :bad_format, :bad_check_digits] }
+
+iex&gt; ExIban.validate(nil)
+{ :error, [:too_short] }</code></pre>
 
   </section>
 </div>
