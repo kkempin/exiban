@@ -16,11 +16,14 @@ defmodule ExIban do
 
       iex> ExIban.validate("GB82 WEST 999 9999 9999")
       { :error, [:bad_length, :bad_format, :bad_check_digits] }
+
+      iex> ExIban.validate(nil)
+      { :error, [:too_short] }
   """
 
   @spec validate(bitstring) :: :ok | {:error, list}
   def validate(iban) do
-    iban
+    (iban || "")
     |> issues
     |> prepare_output
   end
@@ -35,11 +38,14 @@ defmodule ExIban do
 
       iex> ExIban.valid?("GB82 WEST 999 9999 9999")
       false
+
+      iex> ExIban.valid?(nil)
+      false
   """
 
   @spec valid?(bitstring) :: true | false
   def valid?(iban) do
-    iban
+    (iban || "")
     |> issues
     |> do_valid?
   end
