@@ -3,7 +3,6 @@ defmodule ExIban.Validators do
   Set of validation rules to perform on checking IBAN account number.
   """
 
-  import ExIban.Rules
   import ExIban.Parser
 
   @doc """
@@ -53,7 +52,7 @@ defmodule ExIban.Validators do
 
   defp check_country_code({errors, {country_code, _, _, _, _} = parsed_iban}) do
     cond do
-      rules |> Map.get(country_code) |> is_nil ->
+      ExIban.Rules.rules |> Map.get(country_code) |> is_nil ->
         {errors ++ [:unknown_country_code], parsed_iban}
       true -> {errors, parsed_iban}
     end
@@ -62,7 +61,7 @@ defmodule ExIban.Validators do
   defp check_length({errors,
     {country_code, _, _, iban_length, _} = parsed_iban}) do
     cond do
-      rules |> Map.get(country_code, %{}) |> Map.get("length") != iban_length ->
+      ExIban.Rules.rules |> Map.get(country_code, %{}) |> Map.get("length") != iban_length ->
         {errors ++ [:bad_length], parsed_iban}
       true -> {errors, parsed_iban}
     end
@@ -70,7 +69,7 @@ defmodule ExIban.Validators do
 
   defp check_format({errors,
     {country_code, _, bban, _, _} = parsed_iban}) do
-    {:ok, reg} = rules
+    {:ok, reg} = ExIban.Rules.rules
                   |> Map.get(country_code, %{})
                   |> Map.get("bban_pattern", "")
                   |> Regex.compile
@@ -82,7 +81,7 @@ defmodule ExIban.Validators do
 
   defp check_digits({errors,
     {country_code, check_digits, bban, _, _} = parsed_iban}) do
-    chars = String.to_char_list(bban <> country_code <> check_digits)
+    chars = String.to_charlist(bban <> country_code <> check_digits)
     numbers = for byte <- chars, into: [] do
       case byte do
         byte when byte in 48..57 -> List.to_string([byte])
