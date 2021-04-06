@@ -82,7 +82,7 @@ defmodule ExIban.Validators do
 
   defp check_digits({errors,
     {country_code, check_digits, bban, _, _} = parsed_iban}) do
-    chars = String.to_char_list(bban <> country_code <> check_digits)
+    chars = String.to_charlist(bban <> country_code <> check_digits)
     numbers = for byte <- chars, into: [] do
       case byte do
         byte when byte in 48..57 -> List.to_string([byte])
