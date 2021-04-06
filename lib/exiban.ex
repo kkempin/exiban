@@ -94,7 +94,7 @@ defmodule ExIban do
     {_, _, _, _, formatted} = parse(iban)
     formatted
     |> String.replace(~r/(.{4})/, "\\1 ")
-    |> String.strip
+    |> String.trim
   end
 
   @doc """
@@ -110,7 +110,7 @@ defmodule ExIban do
   def format_compact(iban) do
     {_, _, _, _, formatted} = parse(iban)
     formatted
-    |> String.strip
+    |> String.trim
   end
 
   defp prepare_output({[], _}), do: :ok

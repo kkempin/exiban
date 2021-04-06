@@ -29,7 +29,7 @@ defmodule ExIban.Parser do
   defp normalize(iban) do
     iban
     |> String.replace(~r/\s+/, "")
-    |> String.strip
+    |> String.trim
     |> String.upcase
   end
 end
