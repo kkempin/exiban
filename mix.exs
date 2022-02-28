@@ -3,8 +3,8 @@ defmodule ExIban.Mixfile do
 
   def project do
     [app: :exiban,
-     version: "0.0.5",
-     elixir: "~> 1.2",
+     version: "0.0.6",
+     elixir: "~> 1.12",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      description: description(),
@@ -18,8 +18,8 @@ defmodule ExIban.Mixfile do
 
   defp deps do
     [
-      {:earmark, "~> 0.2", only: :dev},
-      {:ex_doc, "~> 0.11", only: :dev}
+      {:earmark, "~> 1.4.18", only: :dev},
+      {:ex_doc, "~> 0.28.2", only: :dev}
     ]
   end
 
