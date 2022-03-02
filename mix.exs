@@ -19,7 +19,8 @@ defmodule ExIban.Mixfile do
   defp deps do
     [
       {:earmark, "~> 1.4.18", only: :dev},
-      {:ex_doc, "~> 0.28.2", only: :dev}
+      {:ex_doc, "~> 0.28.2", only: :dev},
+      {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false}
     ]
   end
 
