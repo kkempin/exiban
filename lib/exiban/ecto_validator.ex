@@ -25,19 +25,24 @@ defmodule ExIban.EctoValidator do
       end
   """
 
-  @spec validate_iban(map, bitstring) :: map | {:error, tuple}
+  @spec validate_iban(map, bitstring) :: map
   def validate_iban(changeset, field) do
     %{changes: changes, errors: errors} = changeset
 
     iban = Map.get(changes, field)
+
     case ExIban.validate(iban) do
       {:error, new_errors} ->
-        new_errors = new_errors
-                      |> Enum.map(&Atom.to_string/1)
-                      |> Enum.map(&(String.replace(&1, "_", " ")))
-                      |> Enum.map(&({field, &1}))
+        new_errors =
+          new_errors
+          |> Enum.map(&Atom.to_string/1)
+          |> Enum.map(&String.replace(&1, "_", " "))
+          |> Enum.map(&{field, {&1, []}})
+
         %{changeset | errors: new_errors ++ errors, valid?: false}
-      :ok -> changeset
+
+      :ok ->
+        changeset
     end
   end
 end
