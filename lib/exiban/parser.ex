@@ -14,7 +14,7 @@ defmodule ExIban.Parser do
   """
 
   @spec parse(binary) :: {bitstring, bitstring, bitstring, integer, bitstring}
-  def parse(iban) do
+  def parse(iban) when byte_size(iban) > 3 do
     iban = iban |> normalize
 
     {
@@ -25,6 +25,8 @@ defmodule ExIban.Parser do
       iban
     }
   end
+
+  def parse(_iban), do: {:error, :invalid_iban}
 
   defp normalize(iban) do
     iban
